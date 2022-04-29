@@ -1,0 +1,55 @@
+---
+# Container descriptor
+- descriptor: "pip-services:context-info:default:default:1.0"
+  name: "service-msgdistribution"
+  description: "Message distribution microservice for pip-services"
+
+# Console logger
+- descriptor: "pip-services:logger:console:default:1.0"
+  level: "trace"
+
+# Performance counters that posts values to log
+- descriptor: "pip-services:counters:log:default:1.0"
+  level: "trace"
+
+# Default controller
+- descriptor: "service-msgdistribution:controller:default:default:1.0"
+
+{{#if HTTP_ENABLED}}
+# Common HTTP endpoint
+- descriptor: "pip-services:endpoint:http:default:1.0"
+  connection:
+    protocol: "http"
+    host: "0.0.0.0"
+    port: 8080
+
+# HTTP endpoint version 1.0
+- descriptor: "service-msgdistribution:service:http:default:1.0"
+  swagger:
+    enable: true
+    auto: true
+
+# Heartbeat service
+- descriptor: "pip-services:heartbeat-service:http:default:1.0"
+
+# Status service
+- descriptor: "pip-services:status-service:http:default:1.0"
+
+# Swagger service
+- descriptor: "pip-services:swagger-service:http:default:1.0"
+{{/if}}
+
+{{#if GRPC_ENABLED}}
+# Common GRPC endpoint
+- descriptor: "pip-services:endpoint:grpc:default:1.0"
+  connection:
+    protocol: "http"
+    host: "0.0.0.0"
+    port: 8090
+
+# GRPC endpoint version 1.0
+- descriptor: "service-msgdistribution:service:grpc:default:1.0"
+
+# Commandable GRPC endpoint version 1.0
+- descriptor: "service-msgdistribution:service:commandable-grpc:default:1.0"
+{{/if}}
