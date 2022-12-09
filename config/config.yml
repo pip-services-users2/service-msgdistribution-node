@@ -15,6 +15,13 @@
 # Default controller
 - descriptor: "service-msgdistribution:controller:default:default:1.0"
 
+# Mock services
+- descriptor: "service-emailsettings:client:memory:default:1.0"
+- descriptor: "service-smssettings:client:memory:default:1.0"
+- descriptor: "service-email:client:null:default:1.0"
+- descriptor: "service-sms:client:null:default:1.0"
+- descriptor: "service-msgtemplates:client:mock:default:1.0"
+
 {{#if HTTP_ENABLED}}
 # Common HTTP endpoint
 - descriptor: "pip-services:endpoint:http:default:1.0"
