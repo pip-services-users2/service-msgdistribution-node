@@ -1,5 +1,4 @@
 const restify = require('restify');
-const assert = require('chai').assert;
 
 import { ConfigParams } from 'pip-services3-commons-nodex';
 import { Descriptor } from 'pip-services3-commons-nodex';
@@ -15,7 +14,7 @@ import { RecipientV1 } from '../../../src/data/version1/RecipientV1';
 import { DeliveryMethodV1 } from '../../../src/data/version1/DeliveryMethodV1';
 import { MessageTemplatesMockClientV1 } from '../../logic/MessageTemplatesMockClientV1';
 import { MessageDistributionController } from '../../../src/logic/MessageDistributionController';
-import { MessageDistributionHttpServiceV1 } from '../../../src/services/version1/MessageDistributionHttpServiceV1';
+import { MessageDistributionCommandableHttpServiceV1 } from '../../../src/services/version1/MessageDistributionCommandableHttpServiceV1';
 
 let httpConfig = ConfigParams.fromTuples(
     "connection.protocol", "http",
@@ -23,8 +22,8 @@ let httpConfig = ConfigParams.fromTuples(
     "connection.port", 3000
 );
 
-suite('MessageDistributionHttpServiceV1', ()=> {
-    let service: MessageDistributionHttpServiceV1;
+suite('MessageDistributionCommandableHttpServiceV1', ()=> {
+    let service: MessageDistributionCommandableHttpServiceV1;
 
     let rest: any;
 
@@ -42,7 +41,7 @@ suite('MessageDistributionHttpServiceV1', ()=> {
         let smsDeliveryClient = new SmsNullClientV1();
         let templatesClient = new MessageTemplatesMockClientV1();
         
-        service = new MessageDistributionHttpServiceV1();
+        service = new MessageDistributionCommandableHttpServiceV1();
         service.configure(httpConfig);
 
         let references: References = References.fromTuples(
