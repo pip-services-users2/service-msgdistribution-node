@@ -89,7 +89,7 @@ Example of microservice configuration
 
 - descriptor: "service-msgdistribution:controller:default:default:1.0"
   
-- descriptor: "service-msgdistribution:service:http:default:1.0"
+- descriptor: "service-msgdistribution:service:commandable-http:default:1.0"
   connection:
     protocol: "http"
     host: "0.0.0.0"
