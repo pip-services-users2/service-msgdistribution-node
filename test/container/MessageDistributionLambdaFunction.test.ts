@@ -10,8 +10,8 @@ suite('MessageDistributionLambdaFunction', ()=> {
     suiteSetup(async () => {
         let config = ConfigParams.fromTuples(
             'logger.descriptor', 'pip-services:logger:console:default:1.0',
-            'emailsettings.descriptor', 'service-emailsettings:client:memory:default:1.0',
-            'smssettings.descriptor', 'service-smssettings:client:memory:default:1.0',
+            'emailsettings.descriptor', 'service-emailsettings:client:mock:default:1.0',
+            'smssettings.descriptor', 'service-smssettings:client:mock:default:1.0',
             'email.descriptor', 'service-email:client:null:default:1.0',
             'sms.descriptor', 'service-sms:client:null:default:1.0',
             'msgtemplates.descriptor', 'service-msgtemplates:client:null:default:1.0',
